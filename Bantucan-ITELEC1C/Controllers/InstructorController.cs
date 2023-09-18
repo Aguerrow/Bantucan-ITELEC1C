@@ -10,33 +10,70 @@ namespace Bantucan_ITELEC1C.Controllers
             {
                 new Instructor()
                 {
-                    Id= 1,FirstName = "Gabriel",LastName = "Montano", Rank =  Rank.Instructor, HiringDate = DateTime.Parse("2022-08-26"), IsTenured = true 
+                    Id= 1,FirstName = "Light",LastName = "Yagami", Rank =  Rank.Instructor, HiringDate = DateTime.Parse("2022-08-26"), IsTenured = true
                 },
                 new Instructor()
                 {
-                    Id= 2,FirstName = "Zyx",LastName = "Montano", Rank = Rank.AssistantProfessor, HiringDate = DateTime.Parse("2022-08-07"), IsTenured = true
+                    Id= 2,FirstName = "Lelouch",LastName = "Lamperouge", Rank = Rank.AssistantProfessor, HiringDate = DateTime.Parse("2022-08-07"), IsTenured = true
                 },
                 new Instructor()
                 {
-                    Id= 3,FirstName = "Aerdriel",LastName = "Montano", Rank = Rank.AssociateProfessor, HiringDate = DateTime.Parse("2020-01-25"), IsTenured = false
+                    Id= 3,FirstName = "Levi",LastName = "Ackerman", Rank = Rank.AssociateProfessor, HiringDate = DateTime.Parse("2020-01-25"), IsTenured = false
                 }
             };
         public IActionResult Index()
         {
-            
+
             return View(InstructorList);
         }
 
         public IActionResult ShowDetail(int id)
         {
-            //Search for the student whose id matches the given id
+
             Instructor? instructor = InstructorList.FirstOrDefault(st => st.Id == id);
-            
-            if (instructor != null)//was a student found?
+
+            if (instructor != null)
                 return View(instructor);
 
             return NotFound();
         }
+        [HttpGet]
+        public IActionResult AddInstructor()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddInstructor(Instructor newInstructor)
+        {
+            InstructorList.Add(newInstructor);
 
+            return View("Index", InstructorList);
+        }
+        public IActionResult Edit(int id)
+        {
+            Instructor? instructor = InstructorList.FirstOrDefault(st => st.Id == id);
+
+            if (instructor != null) // Was a student found?
+                return View(instructor);
+
+            return NotFound();
+        }
+        [HttpPost]
+        public IActionResult Edit(Instructor instructorChange)
+        {
+            Instructor? instructor = InstructorList.FirstOrDefault(st => st.Id == instructorChange.Id);
+            if (instructor != null)
+            {
+                instructor.Id = instructorChange.Id;
+                instructor.LastName = instructorChange.LastName;
+                instructor.FirstName = instructorChange.FirstName;
+                instructor.Rank = instructorChange.Rank;
+                instructor.HiringDate = instructorChange.HiringDate;
+                instructor.IsTenured = instructorChange.IsTenured;
+
+            }
+            return View("Index", InstructorList);
+
+        }
     }
 }

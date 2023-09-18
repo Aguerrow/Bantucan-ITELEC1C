@@ -35,13 +35,13 @@ namespace Bantucan_ITELEC1C.Models
             TransmutedGrade = ComputeTransmutedGrade(SemestralGrade);
         }
 
-        // Private method to compute semestral grade
+      
         private double ComputeSemestralGrade(double prelim, double final)
         {
             return (prelim + final) / 2;
         }
 
-        // Private method to compute transmuted grade
+      
         private string ComputeTransmutedGrade(double semestralGrade)
         {
             switch (semestralGrade)

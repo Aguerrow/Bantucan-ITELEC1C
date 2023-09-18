@@ -7,4 +7,11 @@
     <RootNamespace>Bantucan_ITELEC1C</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Instructor\Edit.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

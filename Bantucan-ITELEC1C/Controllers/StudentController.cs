@@ -39,5 +39,42 @@ namespace Bantucan_ITELEC1C.Controllers
 
             return NotFound();
         }
+        [HttpGet]
+        public IActionResult AddStudent()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddStudent(Student newStudent)
+        {
+            StudentList.Add(newStudent);
+
+            return View("Index", StudentList);
+        }
+        public IActionResult Edit(int id)
+        {
+            Student? student = StudentList.FirstOrDefault(st => st.Id == id);
+
+            if (student != null) // Was a student found?
+                return View(student);
+
+            return NotFound();
+        }
+        [HttpPost]
+        public IActionResult Edit(Student studentChange)
+        {
+            Student? student = StudentList.FirstOrDefault(st => st.Id == studentChange.Id);
+            if (student != null)
+            {
+                student.Id = studentChange.Id;
+                student.FirstName = studentChange.FirstName;
+                student.LastName = studentChange.LastName;
+                student.Course = studentChange.Course;
+                student.AdmissionDate = student.AdmissionDate;
+                student.Email = studentChange.Email;
+                student.GPA = studentChange.GPA;
+            }
+            return View ("Index", StudentList);
+        }
     }
 }

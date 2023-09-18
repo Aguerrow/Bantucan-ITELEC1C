@@ -1,0 +1,42 @@
+﻿@model Student;
+
+@{
+    <h1>Add Student</h1>
+    <form action="AddStudent" method="post">
+        <div class="form-group">
+            <label asp-for="Id">Id</label>
+            <input asp-for="Id" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="FirstName">Name</label>
+            <input asp-for="FirstName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName">Name</label>
+            <input asp-for="LastName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Course">Course</label>
+            <select class="form-control" id="Status" name="Course">
+                <option>Select Course</option>
+                <option>BSIT</option>
+                <option>BSCS</option>
+                <option>BSIS</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="AdmissionDate">Admission Date</label>
+            <input asp-for="AdmissionDate" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="GPA">GPA</label>
+            <input asp-for="GPA" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+}

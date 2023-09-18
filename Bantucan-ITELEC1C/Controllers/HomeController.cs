@@ -27,7 +27,14 @@ namespace Bantucan_ITELEC1C.Controllers
         {
             return View();
         }
-
+        public IActionResult Student()
+        {
+            return View();
+        }
+        public IActionResult Instructor()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
