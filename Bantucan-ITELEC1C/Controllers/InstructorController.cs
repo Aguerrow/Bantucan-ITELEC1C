@@ -75,5 +75,15 @@ namespace Bantucan_ITELEC1C.Controllers
             return View("Index", InstructorList);
 
         }
+
+        /*[HttpPost]
+        public IActionResult Add(Instructor newInstructor) 
+        {
+            if (!ModelState.IsValid) //if the data is invalid
+                return View();
+
+            DbContext.InstructorList.Add(newInstructor);//add
+            return RedirectToAction("Index");
+        }*/
     }
 }
